@@ -99,6 +99,7 @@ The newer version of the guestbook service call the Watson Tone Analyzer service
 ```shell
 kubectl create -f serviceentry-tone.yaml
 ```
+**Replace the value for `hosts` with the watson platform URL for IBM Cloud region where your service instance is. For services created in `au-syd` region, use the host `gateway-syd.watsonplatform.net`:
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3

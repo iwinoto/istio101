@@ -6,10 +6,10 @@ metadata:
   name: guestbook-ingress
 spec:
   rules:
-    - host: xxxx.us-east.containers.mybluemix.net
+    - host: guestbook.iw-iks-demo.au-syd.containers.appdomain.cloud
       http:
         paths:
           - path: /
             backend:
               serviceName: guestbook
-              servicePort: 3000
+              servicePort: 80

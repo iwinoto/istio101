@@ -121,11 +121,20 @@ ibmcloud service key-create my-tone-analyzer-service myKey
 ibmcloud service key-show my-tone-analyzer-service myKey
 ```
 
-5. Open the `analyzer-deployment.yaml` and delete the `#` from the `env` section to un-comment the username and password fields.
+1. Open the `analyzer-deployment.yaml` and delete the `#` from the `env` section to un-comment the `username`, `password` and `url` fields.
 
-6. Add the username and password that you retrieved earlier and save your changes.
+2. The Tone Analyzer service API uses API keys. The user name is `apikey` and the password is the API key found in the credentials. The URL is also found in the credentials. Remove the `https://` protocol section from the URL.
+    ```yaml
+    env:
+        - name: VCAP_SERVICES_TONE_ANALYZER_0_CREDENTIALS_USERNAME
+          value: apikey
+        - name: VCAP_SERVICES_TONE_ANALYZER_0_CREDENTIALS_PASSWORD
+          value: [Replace with apikey from service credentials]
+        - name: VCAP_SERVICES_TONE_ANALYZER_0_CREDENTIALS_URL
+          value: gateway-syd.watsonplatform.net/tone-analyzer/api
+    ```
 
-7. Deploy the analyzer pods and service. The analyzer service talks to Watson Tone Analyzer to help analyze the tone of a message.
+3. Deploy the analyzer pods and service. The analyzer service talks to Watson Tone Analyzer to help analyze the tone of a message.
 
 ```shell
 kubectl apply -f <(istioctl kube-inject -f analyzer-deployment.yaml)

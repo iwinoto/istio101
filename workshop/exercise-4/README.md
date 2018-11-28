@@ -64,14 +64,15 @@ guestbook   LoadBalancer   172.21.134.6   pending        80:31702/TCP   4d
 
 The node port in above sample output is `169.60.87.20:31702`
 
-4. Generate a small load to the app.
+1. Generate a small load to the app. The `hello` method will display the service POD.
 ```shell
-while sleep 0.5; do curl http://<guestbook_endpoint/; done
+while sleep 1.0; do curl http://<guestbook_endpoint>/hello; done
 ```
 
 ## View guestbook telemetry data
 
 #### Jaeger
+**Port forwarding to Jaeger tracing view is not necessary. Instead, use the NodePort service for `kiali-jaeger` service. Open Kiali and open the *Distributed Tracing* page**
 
 1. Establish port forwarding from local port 16686 to the Tracing instance:
 

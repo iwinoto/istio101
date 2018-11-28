@@ -105,7 +105,7 @@ Example output:
              - path: /
                backend:
                  serviceName: guestbook
-                 servicePort: 3000
+                 servicePort: 80
 ```
 
 5. Make note of the IBM-provided subdomain as it will be used to access your Guestbook app in later parts of the course.
